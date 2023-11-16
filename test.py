@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
 def main():
     # Set up the Selenium WebDriver with options
     options = webdriver.ChromeOptions()
@@ -18,6 +17,12 @@ def main():
     try:
         # Open the specified URL
         driver.get("https://kioskportal.indiahealthlink.com/portalm/Account/Login")
+
+        # Check if the URL was successfully reached
+        if "Login" in driver.title:
+            print("URL successfully reached")
+        else:
+            print("URL didn't reach as expected")
 
         # Add additional interactions with the web page here if needed
 
