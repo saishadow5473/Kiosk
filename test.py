@@ -101,12 +101,16 @@ def main():
             print("Clicked on Platform.")
         except Exception as e:
             print("Not clicked on Platform.")
+            return  # Exit the script if Platform button is not clicked
 
-        # Add additional interactions with the web page here if needed
-
-    finally:
-        # Close the browser window
-        driver.quit()
-
-if __name__ == "__main__":
-    main()
+        # Click on the New button
+        new_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[1]/div/div/a"
+        try:
+            new_button = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, new_button_xpath))
+            )
+            new_button.click()
+            print("Clicked on New.")
+        except Exception as e:
+            print("Not clicked on New.")
+            return  # Exit the script if New button is
