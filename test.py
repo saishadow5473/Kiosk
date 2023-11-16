@@ -16,14 +16,15 @@ def main():
 
     try:
         # Open the specified URL
-        driver.get("https://kioskportal.indiahealthlink.com/portalm")
+        target_url = "https://kioskportal.indiahealthlink.com/portalm/Account/Login"
+        driver.get(target_url)
 
         # Check if the URL was successfully reached
         if "Login" in driver.title:
-            print("URL successfully reached")
+            print(f"URL '{target_url}' successfully reached")
 
             # Verify the presence of the element with the given XPath
-            xpath_to_verify = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/a[1]"
+            xpath_to_verify = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/div"
             try:
                 element = WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, xpath_to_verify))
@@ -33,9 +34,12 @@ def main():
                 print(f"XPath {xpath_to_verify} not found. URL didn't reach as expected.")
 
         else:
-            print("URL didn't reach as expected")
+            print(f"URL '{target_url}' didn't reach as expected")
 
         # Add additional interactions with the web page here if needed
+
+    except Exception as e:
+        print(f"An error occurred while opening the URL: {str(e)}")
 
     finally:
         # Close the browser window
