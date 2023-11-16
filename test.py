@@ -1,24 +1,38 @@
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-# Set up the web driver (make sure you have the appropriate webdriver installed, e.g., ChromeDriver)
-driver = webdriver.Chrome()
+def main():
+    # Set up the Selenium WebDriver with options
+    options = webdriver.ChromeOptions()
+    # Comment the next line if you want to see the browser window
+    options.add_argument('--headless')  # Use this if you're running headless
+    # Actual path to Chrome binary (change this to the path on your machine)
+    options.binary_location = '/usr/bin/google-chrome'
 
-# Open the URL
-url = "https://kioskportal.indiahealthlink.com/portalm"
-driver.get(url)
+    # Initialize the Chrome WebDriver
+    driver = webdriver.Chrome(options=options)
 
-try:
-    # Find the element using XPath
-    element = driver.find_element_by_xpath("/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/div")
-    
-    # If the element is found, print "URL reached"
-    print("URL reached")
+    try:
+        # Open the specified URL
+        driver.get("https://kioskportal.indiahealthlink.com/portalm")
 
-except NoSuchElementException:
-    # If the element is not found, print "URL not reached"
-    print("URL not reached")
+        # Verify the presence of the element with the given XPath
+        xpath_to_verify = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/div"
+        try:
+            element = WebDriverWait(driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath_to_verify))
+            )
+            print(f"XPath {xpath_to_verify} verified. URL reached.")
+        except Exception as e:
+            print(f"XPath {xpath_to_verify} not found. URL didn't reach as expected.")
 
-finally:
-    # Close the browser window
-    driver.quit()
+        # Add additional interactions with the web page here if needed
+
+    finally:
+        # Close the browser window
+        driver.quit()
+
+if __name__ == "__main__":
+    main()
