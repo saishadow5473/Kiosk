@@ -89,6 +89,18 @@ def main():
             print("Clicked on Administration.")
         except Exception as e:
             print("Not clicked on Administration.")
+            return  # Exit the script if Administration tab is not clicked
+
+        # Click on the platform button
+        platform_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div[2]/div[2]/div[2]/a[3]"
+        try:
+            platform_button = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, platform_button_xpath))
+            )
+            platform_button.click()
+            print("Clicked on Platform.")
+        except Exception as e:
+            print("Not clicked on Platform.")
 
         # Add additional interactions with the web page here if needed
 
