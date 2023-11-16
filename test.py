@@ -115,15 +115,25 @@ def main():
             print("Not clicked on New.")
             return  # Exit the script if New button is not clicked
 
-        # Verify the presence of the version text
-        version_text_xpath = "//div[@class='detail-label' and contains(text(), 'Version:')]"
+        # Click on the Choose File button
+        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]/input"
         try:
-            version_text = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, version_text_xpath))
+            choose_file_button = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, choose_file_button_xpath))
             )
-            print("Version text verified.")
+            choose_file_button.click()
+            print("Clicked on Choose File.")
         except Exception as e:
-            print("Version text not verified.")
+            print("Not clicked on Choose File.")
+            return  # Exit the script if Choose File button is not clicked
+
+        # Provide the local file path to the file input field
+        local_file_path = "E:\ubuntu folder\3.13.2-E-Sanjeevani.zip"  # Change this to your file path
+        try:
+            choose_file_button.send_keys(local_file_path)
+            print(f"Selected the file: {local_file_path}")
+        except Exception as e:
+            print("Unable to select the file.")
 
         # Add additional interactions with the web page here if needed
 
