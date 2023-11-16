@@ -128,7 +128,7 @@ def main():
             return  # Exit the script if Choose File button is not clicked
 
         # Provide the local file path to the file input field
-        local_file_path = "E:\ubuntu folder\3.13.2-E-Sanjeevani.zip"  # Change this to your file path
+        local_file_path = r"E:\ubuntu folder\3.13.2-E-Sanjeevani.zip"
         try:
             choose_file_button.send_keys(local_file_path)
             print(f"Selected the file: {local_file_path}")
