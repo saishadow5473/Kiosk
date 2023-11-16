@@ -116,7 +116,7 @@ def main():
             return  # Exit the script if New button is not clicked
 
         # Click on the Choose File button
-        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]/input"
+        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]"
         try:
             choose_file_button = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, choose_file_button_xpath))
