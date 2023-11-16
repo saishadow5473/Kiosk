@@ -16,7 +16,7 @@ def main():
 
     try:
         # Open the specified URL
-        driver.get("https://kioskportal.indiahealthlink.com/portalm/Account/Login")
+        driver.get("https://kioskportal.indiahealthlink.com/portalm")
 
         # Check if the URL was successfully reached
         if "Login" in driver.title:
