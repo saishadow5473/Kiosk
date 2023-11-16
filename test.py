@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 def main():
     # Set up the Selenium WebDriver with options
@@ -63,6 +64,20 @@ def main():
             print("Log On clicked.")
         except Exception as e:
             print("Log On not clicked.")
+            return  # Exit the script if Log On button is not clicked
+
+        # Wait for 5 seconds
+        time.sleep(5)
+
+        # Verify the presence of the fourth XPath
+        login_status_xpath = "/html/body/div/div[4]/div[2]/div[1]/a"
+        try:
+            login_status = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, login_status_xpath))
+            )
+            print("Login successful.")
+        except Exception as e:
+            print("Login unsuccessful.")
 
         # Add additional interactions with the web page here if needed
 
