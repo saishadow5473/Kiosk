@@ -41,6 +41,18 @@ def main():
         except Exception as e:
             print("Unable to enter User ID.")
 
+        # Verify the presence of the third XPath and enter the password
+        password_xpath = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/form/div/div[2]/div[2]/input"
+        try:
+            password_input = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, password_xpath))
+            )
+            # Enter the password
+            password_input.send_keys("karthi123")
+            print("Password entered.")
+        except Exception as e:
+            print("Unable to enter Password.")
+
         # Add additional interactions with the web page here if needed
 
     finally:
