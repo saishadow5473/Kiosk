@@ -79,6 +79,17 @@ def main():
         except Exception as e:
             print("Login unsuccessful.")
 
+        # Click on the administration tab
+        administration_tab_xpath = "/html/body/div/div[3]/ul/li[3]/a"
+        try:
+            administration_tab = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, administration_tab_xpath))
+            )
+            administration_tab.click()
+            print("Clicked on Administration.")
+        except Exception as e:
+            print("Not clicked on Administration.")
+
         # Add additional interactions with the web page here if needed
 
     finally:
