@@ -16,17 +16,30 @@ def main():
 
     try:
         # Open the specified URL
-        driver.get("https://kioskportal.indiahealthlink.com/portalm")
+        driver.get("https://kioskportal.indiahealthlink.com/portalm/Account/Login")
 
-        # Verify the presence of the element with the given XPath
+        # Verify the presence of the first XPath
         xpath_to_verify = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/div"
         try:
-            element = WebDriverWait(driver, 20).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath_to_verify))
             )
             print(f"XPath {xpath_to_verify} verified. URL reached.")
         except Exception as e:
             print(f"XPath {xpath_to_verify} not found. URL didn't reach as expected.")
+            return  # Exit the script if the first XPath is not verified
+
+        # Verify the presence of the second XPath and enter the user ID
+        user_id_xpath = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/form/div/div[1]/div[2]/input"
+        try:
+            user_id_input = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, user_id_xpath))
+            )
+            # Enter the user ID
+            user_id_input.send_keys("karthikeyan")
+            print("User ID entered.")
+        except Exception as e:
+            print("Unable to enter User ID.")
 
         # Add additional interactions with the web page here if needed
 
