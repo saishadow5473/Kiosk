@@ -53,6 +53,17 @@ def main():
         except Exception as e:
             print("Unable to enter Password.")
 
+        # Click the log-on button
+        logon_button_xpath = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/a[1]"
+        try:
+            logon_button = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, logon_button_xpath))
+            )
+            logon_button.click()
+            print("Log On clicked.")
+        except Exception as e:
+            print("Log On not clicked.")
+
         # Add additional interactions with the web page here if needed
 
     finally:
