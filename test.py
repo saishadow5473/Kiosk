@@ -113,4 +113,23 @@ def main():
             print("Clicked on New.")
         except Exception as e:
             print("Not clicked on New.")
-            return  # Exit the script if New button is
+            return  # Exit the script if New button is not clicked
+
+        # Verify the presence of the version text
+        version_text_xpath = "//div[@class='detail-label' and contains(text(), 'Version:')]"
+        try:
+            version_text = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, version_text_xpath))
+            )
+            print("Version text verified.")
+        except Exception as e:
+            print("Version text not verified.")
+
+        # Add additional interactions with the web page here if needed
+
+    finally:
+        # Close the browser window
+        driver.quit()
+
+if __name__ == "__main__":
+    main()
