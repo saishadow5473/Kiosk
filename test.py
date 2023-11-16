@@ -23,7 +23,7 @@ def main():
             print("URL successfully reached")
 
             # Verify the presence of the element with the given XPath
-            xpath_to_verify = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/div"
+            xpath_to_verify = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/a[1]"
             try:
                 element = WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, xpath_to_verify))
