@@ -21,6 +21,17 @@ def main():
         # Check if the URL was successfully reached
         if "Login" in driver.title:
             print("URL successfully reached")
+
+            # Verify the presence of the element with the given XPath
+            xpath_to_verify = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/div"
+            try:
+                element = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.XPATH, xpath_to_verify))
+                )
+                print(f"XPath {xpath_to_verify} verified. URL reached.")
+            except Exception as e:
+                print(f"XPath {xpath_to_verify} not found. URL didn't reach as expected.")
+
         else:
             print("URL didn't reach as expected")
 
