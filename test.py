@@ -46,7 +46,7 @@ def main():
             time.sleep(10)
 
         # Verify the presence of the third XPath and enter the password
-        password_xpath = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/form/div/div[2]/div[2]"
+        password_xpath = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/form/div/div[2]/div[2]/input"
         try:
             password_input = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, password_xpath))
@@ -123,7 +123,7 @@ def main():
             return  # Exit the script if New button is not clicked
         time.sleep(10)
 
-        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]/input"
+        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]"
         try:
             choose_file_input = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, choose_file_button_xpath))
