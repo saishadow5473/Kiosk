@@ -33,7 +33,7 @@ def main():
             return  # Exit the script if the first XPath is not verified
 
         # Verify the presence of the second XPath and enter the user ID
-        user_id_xpath = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/form/div/div[1]/div[2]"
+        user_id_xpath = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/form/div/div[1]/div[2]/input"
         try:
             user_id_input = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, user_id_xpath))
@@ -123,7 +123,7 @@ def main():
             return  # Exit the script if New button is not clicked
         time.sleep(10)
 
-        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]/input"
+        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]"
         try:
             choose_file_input = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, choose_file_button_xpath))
