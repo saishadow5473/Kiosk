@@ -8,10 +8,10 @@ def main():
     # Set up the Selenium WebDriver with options
     options = webdriver.ChromeOptions()
     # Comment the next line if you want to see the browser window
-    options.add_argument('--headless')  # Use this if you're running headless
-    # Actual path to Chrome binary (change this to the path on your machine)
-    options.binary_location = '/usr/bin/google-chrome'
-    # options.binary_location = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+    # options.add_argument('--headless')  # Use this if you're running headless
+    # # Actual path to Chrome binary (change this to the path on your machine)
+    # options.binary_location = '/usr/bin/google-chrome'
+    options.binary_location = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
 
     # Initialize the Chrome WebDriver
     driver = webdriver.Chrome(options=options)
@@ -123,14 +123,14 @@ def main():
             return  # Exit the script if New button is not clicked
         time.sleep(10)
 
-        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]"
+        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]/input"
         try:
             choose_file_input = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, choose_file_button_xpath))
             )
 
             # Use JavaScript to set the value of the file input directly
-            driver.execute_script("arguments[0].value = arguments[1]", choose_file_input, "Kiosk/dashboard.indiahealthlink.com.zip")
+            choose_file_input.send_keys(r"Kiosk/dashboard.indiahealthlink.com.zip")
             print("File path sent to Choose File using JavaScript.")
         except Exception as e:
             print("Not able to send file path to Choose File.")
