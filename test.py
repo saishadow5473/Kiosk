@@ -8,9 +8,10 @@ def main():
     # Set up the Selenium WebDriver with options
     options = webdriver.ChromeOptions()
     # Comment the next line if you want to see the browser window
-    options.add_argument('--headless')  # Use this if you're running headless
+    # options.add_argument('--headless')  # Use this if you're running headless
     # Actual path to Chrome binary (change this to the path on your machine)
-    options.binary_location = '/usr/bin/google-chrome'
+    # options.binary_location = '/usr/bin/google-chrome'
+    options.binary_location = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
 
     # Initialize the Chrome WebDriver
     driver = webdriver.Chrome(options=options)
@@ -18,6 +19,7 @@ def main():
     try:
         # Open the specified URL
         driver.get("https://kioskportal.indiahealthlink.com/portalm/Account/Login")
+        time.sleep(10)
 
         # Verify the presence of the first XPath
         xpath_to_verify = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/div"
@@ -41,6 +43,7 @@ def main():
             print("User ID entered.")
         except Exception as e:
             print("Unable to enter User ID.")
+            time.sleep(10)
 
         # Verify the presence of the third XPath and enter the password
         password_xpath = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/form/div/div[2]/div[2]/input"
@@ -53,6 +56,7 @@ def main():
             print("Password entered.")
         except Exception as e:
             print("Unable to enter Password.")
+            time.sleep(10)
 
         # Click the log-on button
         logon_button_xpath = "/html/body/div/div[3]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/a[1]"
@@ -67,7 +71,7 @@ def main():
             return  # Exit the script if Log On button is not clicked
 
         # Wait for 5 seconds
-        time.sleep(5)
+        time.sleep(10)
 
         # Verify the presence of the fourth XPath
         login_status_xpath = "/html/body/div/div[4]/div[2]/div[1]/a"
@@ -78,6 +82,7 @@ def main():
             print("Login successful.")
         except Exception as e:
             print("Login unsuccessful.")
+            time.sleep(10)
 
         # Click on the administration tab
         administration_tab_xpath = "/html/body/div/div[3]/ul/li[3]/a"
@@ -90,6 +95,7 @@ def main():
         except Exception as e:
             print("Not clicked on Administration.")
             return  # Exit the script if Administration tab is not clicked
+        time.sleep(10)
 
         # Click on the platform button
         platform_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div[2]/div[2]/div[2]/a[3]"
@@ -102,6 +108,7 @@ def main():
         except Exception as e:
             print("Not clicked on Platform.")
             return  # Exit the script if Platform button is not clicked
+        time.sleep(10)
 
         # Click on the New button
         new_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[1]/div/div/a"
@@ -114,28 +121,20 @@ def main():
         except Exception as e:
             print("Not clicked on New.")
             return  # Exit the script if New button is not clicked
+        time.sleep(10)
 
-        # Click on the Choose File button
-        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]"
+        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]/input"
         try:
-            choose_file_button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, choose_file_button_xpath))
+            choose_file_input = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, choose_file_button_xpath))
             )
-            choose_file_button.click()
-            print("Clicked on Choose File.")
+            # Send the file path to the input field
+            choose_file_input.send_keys(r"Kiosk/dashboard.indiahealthlink.com.zip")
+            print("File path sent to Choose File.")
         except Exception as e:
-            print("Not clicked on Choose File.")
-            return  # Exit the script if Choose File button is not clicked
-
-        # Provide the local file path to the file input field
-        local_file_path = r"E:\ubuntu folder\3.13.2-E-Sanjeevani.zip"
-        try:
-            choose_file_button.send_keys(local_file_path)
-            print(f"Selected the file: {local_file_path}")
-        except Exception as e:
-            print("Unable to select the file.")
-
-        # Add additional interactions with the web page here if needed
+            print("Not able to send file path to Choose File.")
+            return  # Exit the script if Choose File input is not found
+        time.sleep(15)
 
     finally:
         # Close the browser window
