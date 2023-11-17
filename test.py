@@ -124,16 +124,17 @@ def main():
         time.sleep(10)
 
         choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]/input"
-        try:
-            choose_file_input = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, choose_file_button_xpath))
-            )
-            # Send the file path to the input field
-            choose_file_input.send_keys(r"Kiosk/dashboard.indiahealthlink.com.zip")
-            print("File path sent to Choose File.")
-        except Exception as e:
-            print("Not able to send file path to Choose File.")
-            return  # Exit the script if Choose File input is not found
+try:
+    choose_file_input = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, choose_file_button_xpath))
+    )
+
+    # Use JavaScript to set the value of the file input directly
+    driver.execute_script("arguments[0].value = arguments[1]", choose_file_input, r"Kiosk/dashboard.indiahealthlink.com.zip")
+    print("File path sent to Choose File using JavaScript.")
+except Exception as e:
+    print("Not able to send file path to Choose File.")
+    return  # Exit the script if Choose File input is not found
         time.sleep(15)
 
     finally:
