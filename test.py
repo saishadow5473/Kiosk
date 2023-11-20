@@ -123,7 +123,7 @@ def main():
             return  # Exit the script if New button is not clicked
         time.sleep(10)
 
-        # Click on the Choose File button using JavaScript
+        # Click on the Choose File button
         choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]"
         try:
             choose_file_input = WebDriverWait(driver, 10).until(
@@ -136,13 +136,12 @@ def main():
             return  # Exit the script if Choose File button is not clicked
         time.sleep(10)
 
-        # Specify the file name to be uploaded (without the path)
-        file_name = "README.md"
+        # Specify the file path to be uploaded
+        file_path = "README.md" 
 
-        # Set the file path in the file input field using JavaScript
+        # Set the file path in the file input field
         try:
-            file_input = driver.find_element(By.XPATH, "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]/input[@type='file']")
-            driver.execute_script(f"arguments[0].value='{file_name}';", file_input)
+            choose_file_input.send_keys(file_path)
             print("File uploaded.")
         except Exception as e:
             print("Unable to upload file.")
@@ -150,7 +149,6 @@ def main():
 
         time.sleep(10)
 
-        # ... (continue with the rest of your script)
 
     finally:
         # Close the browser window
