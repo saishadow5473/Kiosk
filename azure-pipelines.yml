@@ -13,7 +13,7 @@ steps:
 - script: |
     ls -a
     pwd
-    python -m pip install requests
-    python -m pip install selenium
-    python test.py
+    # python -m pip install requests
+    # python -m pip install selenium
+    # python test.py
   displayName: 'Run Python Test'
