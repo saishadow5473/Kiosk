@@ -123,33 +123,33 @@ async def file_upload_pyppeteer():
             print("Unable to upload file.")
             return  # Exit the script if file upload is unsuccessful
 
-        # Continue with the rest of your Selenium script
-        # Set up the Selenium WebDriver with options
-        options = webdriver.ChromeOptions()
-        # Comment the next line if you want to see the browser window
-        options.add_argument('--headless')  # Use this if you're running headless
-        # Actual path to Chrome binary (change this to the path on your machine)
-        options.binary_location = '/usr/bin/google-chrome'
-        # options.binary_location = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-
-        # Initialize the Chrome WebDriver
-        driver = webdriver.Chrome(options=options)
-
-        try:
-            # Open the specified URL
-            driver.get("https://kioskportal.indiahealthlink.com/portalm/Account/Login")
-            time.sleep(10)
-
-            # ... (continue with the rest of your Selenium script)
-            # For example, you can use WebDriverWait and other Selenium commands here
-
-        finally:
-            # Close the browser window
-            driver.quit()
-
     finally:
         # Close the browser
         await browser.close()
 
 # Run the event loop for pyppeteer
 asyncio.get_event_loop().run_until_complete(file_upload_pyppeteer())
+
+# Continue with the rest of your Selenium script
+# Set up the Selenium WebDriver with options
+options = webdriver.ChromeOptions()
+# Comment the next line if you want to see the browser window
+options.add_argument('--headless')  # Use this if you're running headless
+# Actual path to Chrome binary (change this to the path on your machine)
+options.binary_location = '/usr/bin/google-chrome'
+# options.binary_location = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+
+# Initialize the Chrome WebDriver
+driver = webdriver.Chrome(options=options)
+
+try:
+    # Open the specified URL
+    driver.get("https://kioskportal.indiahealthlink.com/portalm/Account/Login")
+    time.sleep(10)
+
+    # ... (continue with the rest of your Selenium script)
+    # For example, you can use WebDriverWait and other Selenium commands here
+
+finally:
+    # Close the browser window
+    driver.quit()
