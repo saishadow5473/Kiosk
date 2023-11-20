@@ -12,6 +12,7 @@ pool:
 steps:
 - script: |
     ls -a
+    pwd
     python -m pip install requests
     python -m pip install selenium
     python test.py
