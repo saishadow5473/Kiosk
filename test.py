@@ -57,7 +57,7 @@ async def file_upload_pyppeteer():
             return  # Exit the script if Log On button is not clicked
 
         # Wait for 5 seconds
-        await page.waitForTimeout(5000)
+        await asyncio.sleep(5)
 
         # Verify the presence of the fourth XPath
         login_status_xpath = "/html/body/div/div[4]/div[2]/div[1]/a"
@@ -66,7 +66,7 @@ async def file_upload_pyppeteer():
             print("Login successful.")
         except Exception as e:
             print("Login unsuccessful.")
-            await page.waitForTimeout(5000)
+            await asyncio.sleep(5)
 
         # Click on the administration tab
         administration_tab_xpath = "/html/body/div/div[3]/ul/li[3]/a"
@@ -77,7 +77,7 @@ async def file_upload_pyppeteer():
         except Exception as e:
             print("Not clicked on Administration.")
             return  # Exit the script if Administration tab is not clicked
-        await page.waitForTimeout(5000)
+        await asyncio.sleep(5)
 
         # Click on the platform button
         platform_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div[2]/div[2]/div[2]/a[3]"
@@ -88,7 +88,7 @@ async def file_upload_pyppeteer():
         except Exception as e:
             print("Not clicked on Platform.")
             return  # Exit the script if Platform button is not clicked
-        await page.waitForTimeout(5000)
+        await asyncio.sleep(5)
 
         # Click on the New button
         new_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[1]/div/div/a"
@@ -99,7 +99,7 @@ async def file_upload_pyppeteer():
         except Exception as e:
             print("Not clicked on New.")
             return  # Exit the script if New button is not clicked
-        await page.waitForTimeout(5000)
+        await asyncio.sleep(5)
 
         # Click on the Choose File button
         choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]"
@@ -110,7 +110,7 @@ async def file_upload_pyppeteer():
         except Exception as e:
             print("Not clicked on Choose File.")
             return  # Exit the script if Choose File button is not clicked
-        await page.waitForTimeout(5000)
+        await asyncio.sleep(5)
 
         # Specify the file name to be uploaded (without the path)
         file_name = "README.md"
