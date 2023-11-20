@@ -140,12 +140,16 @@ def main():
         file_path = "README.md" 
 
         # Set the file path in the file input field
-        try:
-            choose_file_input.send_keys(file_path)
-            print("File uploaded.")
-        except Exception as e:
-            print("Unable to upload file.")
-            return  # Exit the script if file upload is unsuccessful
+        # try:
+        #     choose_file_input.send_keys(file_path)
+        #     print("File uploaded.")
+        # except Exception as e:
+        #     print("Unable to upload file.")
+        #     return  # Exit the script if file upload is unsuccessful
+        # Use pyautogui to navigate to the file dialog and select the file
+        pyautogui.write(file_name)
+        pyautogui.press('enter')
+        print("File uploaded.")
 
         time.sleep(10)
 
