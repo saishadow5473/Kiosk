@@ -13,6 +13,7 @@ steps:
 - script: |
     ls -a
     pwd
+    pip install pyautogui
     python -m pip install requests
     python -m pip install selenium
     python test.py
