@@ -137,7 +137,7 @@ def main():
         time.sleep(10)
 
         # Specify the file path to be uploaded
-        file_path = "Kiosk/dashboard.indiahealthlink.com.zip" 
+        file_path = "/home/vsts/work/1/s/dashboard.indiahealthlink.com.zip" 
 
         # Set the file path in the file input field
         try:
