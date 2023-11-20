@@ -124,7 +124,7 @@ def main():
         time.sleep(10)
 
         # Click on the Choose File button
-        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]"
+        choose_file_button_xpath = "/html/body/div/div[4]/div[2]/div[3]/div[2]/div/div/div/form/div/div[3]/div[2]/input"
         try:
             choose_file_input = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, choose_file_button_xpath))
